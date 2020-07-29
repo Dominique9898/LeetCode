@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Dominique Wei
  * @Date: 2020-07-28 13:14:39
- * @LastEditTime: 2020-07-28 13:49:34
+ * @LastEditTime: 2020-07-28 13:53:45
  */ 
 // 滑动窗口
 var minSubArrayLen = function (s, nums) {
@@ -12,12 +12,10 @@ var minSubArrayLen = function (s, nums) {
     for(right = 0; right < nums.length; right ++) {
         sum = sum + nums[right]
         while( sum >= s) {
-            min = Math.min(right - left + 1, min)
             sum = sum - nums[left++]
+            min = Math.min(right - left + 1, min)
+            console.log(sum, min)
         }
     }
     return min < Number.MAX_VALUE ? min : 0
 };
-
-
-console.log(minSubArrayLen(11, [1,2,3,4,5]))
